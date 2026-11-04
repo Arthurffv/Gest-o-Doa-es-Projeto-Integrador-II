@@ -1,0 +1,9 @@
+/* Paleta do protótipo */
+:root {
+  --verde: #1f7a4d;
+  --fundo: #f5f6f1;
+  --texto: #1d2a22;
+  --texto-suave: #55625a;
+  --borda: #d9ddd3;
+}
+body { margin: 0; background: var(--fundo); color: var(--texto); }
