@@ -8,6 +8,9 @@ import { query } from './db';
 import { HttpError, tratarErros } from './errors';
 import { authRouter } from './routes/auth';
 import { campanhasRouter } from './routes/campanhas';
+import { itensRouter } from './routes/itens';
+import { parceirosRouter } from './routes/parceiros';
+import { usuariosRouter } from './routes/usuarios';
 
 const app = express();
 app.use(cors({ origin: config.corsOrigin }));
@@ -22,8 +25,11 @@ api.get('/health', async (_req, res) => {
   res.json({ status: 'ok' });
 });
 api.use('/auth', authRouter);
+api.use('/usuarios', usuariosRouter);
 api.use('/campanhas', campanhasRouter);
-// TODO: api.use('/itens', itensRouter); api.use('/parceiros', ...); api.use('/relatorios', ...);
+api.use('/parceiros', parceirosRouter);
+api.use('/itens', itensRouter);
+// P4: api.use('/itens', triagemRouter);   P5: api.use('/relatorios', relatoriosRouter);
 api.use((_req, _res) => { throw new HttpError(404, 'NAO_ENCONTRADO', 'Rota não encontrada.'); });
 app.use('/api/v1', api);
 
